@@ -6,7 +6,6 @@
     "jsonVersion":"1.1",
     "protocol":"json",
     "serviceFullName":"Alexa For Business",
-    "serviceId":"Alexa For Business",
     "signatureVersion":"v4",
     "targetPrefix":"AlexaForBusiness",
     "uid":"alexaforbusiness-2017-11-09"
@@ -34,8 +33,7 @@
       "input":{"shape":"AssociateDeviceWithRoomRequest"},
       "output":{"shape":"AssociateDeviceWithRoomResponse"},
       "errors":[
-        {"shape":"LimitExceededException"},
-        {"shape":"DeviceNotRegisteredException"}
+        {"shape":"LimitExceededException"}
       ],
       "documentation":"<p>Associates a device with a given room. This applies all the settings from the room profile to the device, and all the skills in any skill groups added to that room. This operation requires the device to be online, or else a manual sync is required. </p>"
     },
@@ -239,9 +237,6 @@
       },
       "input":{"shape":"DisassociateDeviceFromRoomRequest"},
       "output":{"shape":"DisassociateDeviceFromRoomResponse"},
-      "errors":[
-        {"shape":"DeviceNotRegisteredException"}
-      ],
       "documentation":"<p>Disassociates a device from its current room. The device continues to be connected to the Wi-Fi network and is still registered to the account. The device settings and skills are removed from the room.</p>"
     },
     "DisassociateSkillGroupFromRoom":{
@@ -509,9 +504,6 @@
       },
       "input":{"shape":"StartDeviceSyncRequest"},
       "output":{"shape":"StartDeviceSyncResponse"},
-      "errors":[
-        {"shape":"DeviceNotRegisteredException"}
-      ],
       "documentation":"<p>Resets a device and its account to the known default settings, by clearing all information and settings set by previous users.</p>"
     },
     "TagResource":{
@@ -576,8 +568,7 @@
       "input":{"shape":"UpdateDeviceRequest"},
       "output":{"shape":"UpdateDeviceResponse"},
       "errors":[
-        {"shape":"NotFoundException"},
-        {"shape":"DeviceNotRegisteredException"}
+        {"shape":"NotFoundException"}
       ],
       "documentation":"<p>Updates the device name by device ARN.</p>"
     },
@@ -1300,10 +1291,7 @@
     },
     "DeviceEventType":{
       "type":"string",
-      "enum":[
-        "CONNECTION_STATUS",
-        "DEVICE_STATUS"
-      ]
+      "enum":["CONNECTION_STATUS"]
     },
     "DeviceEventValue":{"type":"string"},
     "DeviceName":{
@@ -1311,13 +1299,6 @@
       "max":100,
       "min":2,
       "pattern":"[\\u0009\\u000A\\u000D\\u0020-\\u007E\\u0085\\u00A0-\\uD7FF\\uE000-\\uFFFD\\u10000-\\u10FFFF]*"
-    },
-    "DeviceNotRegisteredException":{
-      "type":"structure",
-      "members":{
-        "Message":{"shape":"ErrorMessage"}
-      },
-      "exception":true
     },
     "DeviceSerialNumber":{
       "type":"string",
@@ -1328,8 +1309,7 @@
       "enum":[
         "READY",
         "PENDING",
-        "WAS_OFFLINE",
-        "DEREGISTERED"
+        "WAS_OFFLINE"
       ]
     },
     "DeviceStatusDetail":{

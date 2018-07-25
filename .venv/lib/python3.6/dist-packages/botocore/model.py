@@ -284,10 +284,6 @@ class ServiceModel(object):
             return self.endpoint_prefix
 
     @CachedProperty
-    def service_id(self):
-        return self._get_metadata_property('serviceId')
-
-    @CachedProperty
     def signing_name(self):
         """The name to use when computing signatures.
 
@@ -316,7 +312,7 @@ class ServiceModel(object):
             return self.metadata[name]
         except KeyError:
             raise UndefinedModelAttributeError(
-                '"%s" not defined in the metadata of the model: %s' %
+                '"%s" not defined in the metadata of the the model: %s' %
                 (name, self))
 
     # Signature version is one of the rare properties

@@ -1,4 +1,4 @@
-#!/home/ec2-user/environment/project_inbar/.venv/bin/python3.6
+#!/home/ec2-user/environment/project_inbar/.venv/bin/python3
 
 # $Id: rst2xetex.py 7847 2015-03-17 17:30:47Z milde $
 # Author: Guenter Milde

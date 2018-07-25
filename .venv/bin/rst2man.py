@@ -1,4 +1,4 @@
-#!/home/ec2-user/environment/project_inbar/.venv/bin/python3.6
+#!/home/ec2-user/environment/project_inbar/.venv/bin/python3
 
 # Author: 
 # Contact: grubert@users.sf.net

@@ -161,7 +161,7 @@ def set_value_from_jmespath(source, expression, value, is_first=True):
 class InstanceMetadataFetcher(object):
     def __init__(self, timeout=DEFAULT_METADATA_SERVICE_TIMEOUT,
                  num_attempts=1, url=METADATA_SECURITY_CREDENTIALS_URL,
-                 env=None, user_agent=None):
+                 env=None):
         self._timeout = timeout
         self._num_attempts = num_attempts
         self._url = url
@@ -169,20 +169,15 @@ class InstanceMetadataFetcher(object):
             env = os.environ.copy()
         self._disabled = env.get('AWS_EC2_METADATA_DISABLED', 'false').lower()
         self._disabled = self._disabled == 'true'
-        self._user_agent = user_agent
 
     def _get_request(self, url, timeout, num_attempts=1):
         if self._disabled:
             logger.debug("Access to EC2 metadata has been disabled.")
             raise _RetriesExceededError()
 
-        headers = {}
-        if self._user_agent is not None:
-            headers['User-Agent'] = self._user_agent
-
         for i in range(num_attempts):
             try:
-                response = requests.get(url, timeout=timeout, headers=headers)
+                response = requests.get(url, timeout=timeout)
             except RETRYABLE_HTTP_ERRORS as e:
                 logger.debug("Caught exception while trying to retrieve "
                              "credentials: %s", e, exc_info=True)
@@ -333,7 +328,7 @@ def percent_encode(input_str, safe=SAFE_CHARS):
 
     If given the binary type, will simply URL encode it. If given the
     text type, will produce the binary type by UTF-8 encoding the
-    text. If given something else, will convert it to the text type
+    text. If given something else, will convert it to the the text type
     first.
     """
     # If its not a binary or text string, make it a text string.
@@ -1025,8 +1020,6 @@ class ContainerMetadataFetcher(object):
     def __init__(self, session=None, sleep=time.sleep):
         if session is None:
             session = requests.Session()
-            session.trust_env = False
-            session.proxies = {}
         self._session = session
         self._sleep = sleep
 

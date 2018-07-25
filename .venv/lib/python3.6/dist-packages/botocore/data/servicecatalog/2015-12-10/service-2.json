@@ -2260,10 +2260,6 @@
         "PageSize":{
           "shape":"PageSize",
           "documentation":"<p>The maximum number of items to return with this call.</p>"
-        },
-        "PortfolioShareType":{
-          "shape":"PortfolioShareType",
-          "documentation":"<p>The type of shared portfolios to list. The default is to list imported portfolios.</p> <ul> <li> <p> <code>AWS_SERVICECATALOG</code> - List default portfolios</p> </li> <li> <p> <code>IMPORTED</code> - List imported portfolios</p> </li> </ul>"
         }
       }
     },
@@ -2776,13 +2772,6 @@
       "min":1
     },
     "PortfolioName":{"type":"string"},
-    "PortfolioShareType":{
-      "type":"string",
-      "enum":[
-        "IMPORTED",
-        "AWS_SERVICECATALOG"
-      ]
-    },
     "Principal":{
       "type":"structure",
       "members":{
@@ -2825,8 +2814,7 @@
       "enum":[
         "CLOUD_FORMATION_TEMPLATE",
         "MARKETPLACE"
-      ],
-      "max":8191
+      ]
     },
     "ProductViewAggregationType":{"type":"string"},
     "ProductViewAggregationValue":{
@@ -2898,18 +2886,9 @@
       "key":{"shape":"ProductViewFilterBy"},
       "value":{"shape":"ProductViewFilterValues"}
     },
-    "ProductViewName":{
-      "type":"string",
-      "max":8191
-    },
-    "ProductViewOwner":{
-      "type":"string",
-      "max":8191
-    },
-    "ProductViewShortDescription":{
-      "type":"string",
-      "max":8191
-    },
+    "ProductViewName":{"type":"string"},
+    "ProductViewOwner":{"type":"string"},
+    "ProductViewShortDescription":{"type":"string"},
     "ProductViewSortBy":{
       "type":"string",
       "enum":[
@@ -4042,18 +4021,9 @@
       "type":"string",
       "pattern":"[\\u0009\\u000a\\u000d\\u0020-\\uD7FF\\uE000-\\uFFFD]*"
     },
-    "SupportDescription":{
-      "type":"string",
-      "max":8191
-    },
-    "SupportEmail":{
-      "type":"string",
-      "max":254
-    },
-    "SupportUrl":{
-      "type":"string",
-      "max":2083
-    },
+    "SupportDescription":{"type":"string"},
+    "SupportEmail":{"type":"string"},
+    "SupportUrl":{"type":"string"},
     "Tag":{
       "type":"structure",
       "required":[

@@ -1,4 +1,4 @@
-#!/home/ec2-user/environment/project_inbar/.venv/bin/python3.6
+#!/home/ec2-user/environment/project_inbar/.venv/bin/python3
 
 # $Id: rstpep2html.py 4564 2006-05-21 20:44:42Z wiemann $
 # Author: David Goodger <goodger@python.org>

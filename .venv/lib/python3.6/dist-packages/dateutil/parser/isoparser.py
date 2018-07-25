@@ -4,8 +4,6 @@ This module offers a parser for ISO-8601 strings
 
 It is intended to support all valid date, time and datetime formats per the
 ISO-8601 specification.
-
-..versionadded:: 2.7.0
 """
 from datetime import datetime, timedelta, time, date
 import calendar
@@ -126,8 +124,6 @@ class isoparser(object):
             currently fail (e.g. ``2017-01-01T00:00+00:00:00``) are not
             guaranteed to continue failing in future versions if they encode
             a valid date.
-
-        .. versionadded:: 2.7.0
         """
         components, pos = self._parse_isodate(dt_str)
 

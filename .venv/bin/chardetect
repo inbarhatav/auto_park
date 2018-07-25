@@ -1,4 +1,4 @@
-#!/home/ec2-user/environment/project_inbar/.venv/bin/python3.6
+#!/home/ec2-user/environment/project_inbar/.venv/bin/python3
 
 # -*- coding: utf-8 -*-
 import re

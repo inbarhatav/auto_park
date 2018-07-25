@@ -44,14 +44,12 @@ class relativedelta(object):
             the corresponding aritmetic operation on the original datetime value
             with the information in the relativedelta.
 
-        weekday: 
-            One of the weekday instances (MO, TU, etc). These
-            instances may receive a parameter N, specifying the Nth
-            weekday, which could be positive or negative (like MO(+1)
-            or MO(-2). Not specifying it is the same as specifying
-            +1. You can also use an integer, where 0=MO. Notice that
-            if the calculated date is already Monday, for example,
-            using MO(1) or MO(-1) won't change the day.
+        weekday:
+            One of the weekday instances (MO, TU, etc). These instances may
+            receive a parameter N, specifying the Nth weekday, which could
+            be positive or negative (like MO(+1) or MO(-2). Not specifying
+            it is the same as specifying +1. You can also use an integer,
+            where 0=MO.
 
         leapdays:
             Will add given days to the date found, if year is a leap
@@ -61,36 +59,33 @@ class relativedelta(object):
             Set the yearday or the non-leap year day (jump leap days).
             These are converted to day/month/leapdays information.
 
-    There are relative and absolute forms of the keyword
-    arguments. The plural is relative, and the singular is
-    absolute. For each argument in the order below, the absolute form
-    is applied first (by setting each attribute to that value) and
-    then the relative form (by adding the value to the attribute).
+    Here is the behavior of operations with relativedelta:
 
-    The order of attributes considered when this relativedelta is
-    added to a datetime is:
+    1. Calculate the absolute year, using the 'year' argument, or the
+       original datetime year, if the argument is not present.
 
-    1. Year
-    2. Month
-    3. Day
-    4. Hours
-    5. Minutes
-    6. Seconds
-    7. Microseconds
+    2. Add the relative 'years' argument to the absolute year.
 
-    Finally, weekday is applied, using the rule described above.
+    3. Do steps 1 and 2 for month/months.
 
-    For example
+    4. Calculate the absolute day, using the 'day' argument, or the
+       original datetime day, if the argument is not present. Then,
+       subtract from the day until it fits in the year and month
+       found after their operations.
 
-    >>> dt = datetime(2018, 4, 9, 13, 37, 0)
-    >>> delta = relativedelta(hours=25, day=1, weekday=MO(1))
-    datetime(2018, 4, 2, 14, 37, 0)
+    5. Add the relative 'days' argument to the absolute day. Notice
+       that the 'weeks' argument is multiplied by 7 and added to
+       'days'.
 
-    First, the day is set to 1 (the first of the month), then 25 hours
-    are added, to get to the 2nd day and 14th hour, finally the
-    weekday is applied, but since the 2nd is already a Monday there is
-    no effect.
+    6. Do steps 1 and 2 for hour/hours, minute/minutes, second/seconds,
+       microsecond/microseconds.
 
+    7. If the 'weekday' argument is present, calculate the weekday,
+       with the given (wday, nth) tuple. wday is the index of the
+       weekday (0-6, 0=Mon), and nth is the number of weeks to add
+       forward or backward, depending on its signal. Notice that if
+       the calculated date is already Monday, for example, using
+       (0, 1) or (0, -1) won't change the day.
     """
 
     def __init__(self, dt1=None, dt2=None,
