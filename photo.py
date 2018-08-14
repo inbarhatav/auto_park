@@ -1,6 +1,14 @@
 import requests
+from picamera import PiCamera
+from time import sleep
 
-#  curl -F 'user_file=@/home/ec2-user/environment/img.jpg' http://aws-class-01app.2e$
+#THE CAMERA RECORDS ONE FRAME
+camera.start_preview()
+for i in range(1):
+sleep(0)
+camera.capture('/home/pi/auto_park/picamera/car01.jpg')
+camera.stop_preview()
+
 # change this to your prod url
 url = "http://project-inbarapp.nkxpp8m2v7.us-east-2.elasticbeanstalk.com/upload"
 #provide image locatopm
